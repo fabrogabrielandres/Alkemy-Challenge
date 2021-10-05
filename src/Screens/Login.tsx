@@ -18,7 +18,6 @@ export const Login = () => {
     <>
       <Stack align="center" bgPosition="center" h={'100vh'} justify="center" w={'100vw'}>
         <video autoPlay loop muted className="video" src={video} />
-
         <Stack align="center" backgroundColor="transparent" height="s" justify="center" width="s">
           <Formik
             initialValues={{
@@ -27,8 +26,8 @@ export const Login = () => {
             }}
             onSubmit={(values: Values) => {
               if (values.email === 'challenge@alkemy.org' && values.password === 'react') {
-                history.push('/home');
                 localStorage.setItem('token', 'logged');
+                history.push('/home');
               }
             }}
           >
