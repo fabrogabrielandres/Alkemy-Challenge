@@ -1,4 +1,4 @@
-import {Box, Stack, Text} from '@chakra-ui/layout';
+import {Box, Container, Grid, GridItem, Stack, Text} from '@chakra-ui/layout';
 import {Input} from '@chakra-ui/react';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
@@ -29,11 +29,16 @@ export const Search = () => {
   };
 
   return (
-    <Stack align="center" justify="center">
-      <Box>
-        <Text textAlign="center">Search your Hero</Text>
-        <Input margin={13} padding={13} placeContent="find a hero" onChange={handleInput} />
-      </Box>
-    </Stack>
+    <>
+      <Stack justify="center">
+        <Box backgroundColor="red">
+          <Text textAlign="center">Search your Hero</Text>
+          <Input placeContent="find a hero" onChange={handleInput} />
+        </Box>
+        <Box backgroundColor="blue">
+          <Text>holas</Text>
+        </Box>
+      </Stack>
+    </>
   );
 };

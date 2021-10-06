@@ -16,9 +16,9 @@ export const Login = () => {
 
   return (
     <>
-      <Stack align="center" bgPosition="center" h={'100vh'} justify="center" w={'100vw'}>
+      <Stack h={'100vh'} justify="center" w={'100vw'}>
         <video autoPlay loop muted className="video" src={video} />
-        <Stack align="center" backgroundColor="transparent" height="s" justify="center" width="s">
+        <Stack alignSelf="center" backgroundColor="transparent">
           <Formik
             initialValues={{
               email: '',
@@ -32,7 +32,7 @@ export const Login = () => {
             }}
           >
             <Form>
-              <Stack align="center" justify="center">
+              <Stack align="center">
                 <Text backgroundColor="transparent" color="white" fontSize={'2xl'} htmlFor="email">
                   Your Email
                 </Text>

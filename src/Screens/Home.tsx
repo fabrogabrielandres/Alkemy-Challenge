@@ -1,11 +1,14 @@
 import React from 'react';
+import './login.css';
+
+import video from '../assets/home.mp4';
 
 import {Search} from './Search';
 
 export const Home = () => {
   return (
     <div>
-      <h1>hola</h1>
+      <video autoPlay loop muted className="video" src={video} />
       <Search />
     </div>
   );
