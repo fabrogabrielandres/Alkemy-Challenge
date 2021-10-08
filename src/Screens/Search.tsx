@@ -1,7 +1,8 @@
-import {Stack, Text, Flex} from '@chakra-ui/layout';
-import {Input} from '@chakra-ui/react';
+import {Stack, Flex} from '@chakra-ui/layout';
+import {Input, Icon} from '@chakra-ui/react';
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
+import {BiSearchAlt2} from 'react-icons/bi';
 
 import {Card} from '~/component/Card';
 import {Hero, ReqSearchInterface} from '~/interfaces/reqSearchInterface';
@@ -35,11 +36,15 @@ export const Search = () => {
     <>
       <video autoPlay loop muted className="videoSearch" src={video} />
       <Stack alignItems="center">
-        <Stack>
-          <Text fontSize={'5xl'} textColor="white">
-            Search your Hero
-          </Text>
-          <Input placeContent="find a hero" onChange={handleInput} />
+        <Stack alignItems="center" direction="row" marginTop={4}>
+          <Input
+            backgroundColor="transparent"
+            color="white"
+            placeContent="find a hero"
+            variant="outline"
+            onChange={handleInput}
+          />
+          <Icon as={BiSearchAlt2} color="white" />
         </Stack>
       </Stack>
 

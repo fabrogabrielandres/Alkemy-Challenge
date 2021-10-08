@@ -7,9 +7,9 @@ export const Card = ({url = ''}) => {
   return (
     <Flex border="solid" borderColor="red" direction="column" margin={'2%'} w={'29%'}>
       <Image alt="hero" boxSize="full" position="relative" src={url} />
-      <Box position="absolute" w="20%">
-        <Button backgroundColor="red" size="xs" textColor="white" w="50%">
-          Add
+      <Box position="absolute">
+        <Button backgroundColor="red" size="xs" textColor="white">
+          Addddddddddddddddddddddddddd
         </Button>
       </Box>
     </Flex>
