@@ -1,17 +1,22 @@
 import {Button} from '@chakra-ui/button';
 import {Image} from '@chakra-ui/image';
-import {Box, Flex} from '@chakra-ui/layout';
+import {Flex, Stack} from '@chakra-ui/layout';
+import {BiMessageRoundedAdd, BiInfoCircle} from 'react-icons/bi';
 import React from 'react';
 
 export const Card = ({url = ''}) => {
   return (
-    <Flex border="solid" borderColor="red" direction="column" margin={'2%'} w={'29%'}>
+    <Flex border="solid" borderColor="red" direction="column" margin={'2%'} w={'30%'}>
       <Image alt="hero" boxSize="full" position="relative" src={url} />
-      <Box position="absolute">
-        <Button backgroundColor="red" size="xs" textColor="white">
-          Addddddddddddddddddddddddddd
+
+      <Flex flexDir="column" position="absolute">
+        <Button backgroundColor="blue" size="xs" textColor="white">
+          <BiMessageRoundedAdd />
         </Button>
-      </Box>
+        <Button backgroundColor="red" size="xs" textColor="white">
+          <BiInfoCircle />
+        </Button>
+      </Flex>
     </Flex>
   );
 };

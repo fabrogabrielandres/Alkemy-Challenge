@@ -4,9 +4,16 @@ import { Hero } from '../../../interfaces/reqSearchInterface';
 
 export const HeroesSlice = createSlice({
     name: 'heroes',
-    reducers: {},
+    reducers: {
+        addHeroList:(state, action) =>{
+            
+        }
+    },
     initialState: {
         allHeroes: [] as Hero[],
+        badHeroes: [] as Hero[],
+        GoodHeroes: [] as Hero[],
+
     }
 })
 
