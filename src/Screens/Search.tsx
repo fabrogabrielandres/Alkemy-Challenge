@@ -50,7 +50,7 @@ export const Search = () => {
 
       <Flex flexDir="row" justifyContent="space-around" wrap="wrap">
         {fetchList.map((hero, idx) => (
-          <Card key={idx} url={hero.image.url} />
+          <Card key={idx} hero={hero} />
         ))}
       </Flex>
     </>
