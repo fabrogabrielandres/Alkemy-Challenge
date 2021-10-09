@@ -1,21 +1,36 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Hero } from '../../../interfaces/reqSearchInterface';
+import { Hero, HeroTeam } from '../../../interfaces/reqSearchInterface';
+
+interface InitialState {
+    allHeroes: Hero[];
+    teamBad: Hero[];
+    teamGood: Hero[];
+}
+
+
+
 
 export const HeroesSlice = createSlice({
     name: 'heroes',
     reducers: {
-        addHeroList:(state, action) =>{
-            
+        addTeam: (state, action: PayloadAction<HeroTeam>) => {
+
+            if (action.payload.team === "bad") {
+                return (
+                    { ...state, teamBad: [...state.teamBad, action.payload.hero] }
+                )
+            }
+            else return ({ ...state, teamGood: [...state.teamGood, action.payload.hero] })
         }
     },
     initialState: {
-        allHeroes: [] as Hero[],
-        badHeroes: [] as Hero[],
-        GoodHeroes: [] as Hero[],
+        allHeroes: [],
+        teamBad: [],
+        teamGood: [],
+        // eslint-disable-next-line
+    } as InitialState,
+});
 
-    }
-})
-
-
-export default HeroesSlice.reducer
+export const { addTeam } = HeroesSlice.actions;
+export default HeroesSlice.reducer;

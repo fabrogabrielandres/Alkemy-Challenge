@@ -6,6 +6,11 @@ export interface ReqSearchInterface {
   results: Hero[];
 }
 
+export interface HeroTeam {
+  team: string;
+  hero: Hero;
+}
+
 export interface Hero {
   id: string;
   name: string;
