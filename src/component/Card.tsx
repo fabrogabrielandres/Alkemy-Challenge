@@ -3,9 +3,11 @@ import {Image} from '@chakra-ui/image';
 import {Flex} from '@chakra-ui/layout';
 import {BiMessageRoundedAdd, BiInfoCircle} from 'react-icons/bi';
 import React from 'react';
+import {useDispatch} from 'react-redux';
 
 import {Hero} from '../interfaces/reqSearchInterface';
 import {addLogic} from '~/helpers/addLogic';
+// import {addTeam} from '~/store/slices/heroes/HeroesSlice';
 
 interface Props {
   hero: Hero;
@@ -13,6 +15,7 @@ interface Props {
 
 export const Card = ({hero}: Props) => {
   const {alignment} = hero.biography;
+  const dispatch = useDispatch();
 
   return (
     <Flex border="solid" borderColor="red" direction="column" margin={'2%'} w={'30%'}>
@@ -33,7 +36,8 @@ export const Card = ({hero}: Props) => {
               backgroundColor="red"
               size="xs"
               textColor="white"
-              onClick={() => addLogic(hero)}
+              // onClick={() => dispatch(addTeam(hero))}
+              onClick={() => addLogic(hero, alignment, dispatch)}
             >
               <BiInfoCircle />
             </Button>

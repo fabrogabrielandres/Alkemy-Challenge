@@ -14,16 +14,30 @@ interface InitialState {
 export const HeroesSlice = createSlice({
     name: 'heroes',
     reducers: {
-        addTeam: (state, action: PayloadAction<Hero>) => {
-                const opcion=true
 
-            if (opcion) {
+        addTeam: (state, action: PayloadAction<HeroTeam>) => {
+
+
+            if (action.payload.team === "bad") {
                 return (
-                    { ...state, teamBad: [...state.teamBad, action.payload] }
+                    { ...state, teamBad: [...state.teamBad, action.payload.hero] }
                 )
             }
-            else return ({ ...state, teamGood: [...state.teamGood, action.payload] })
-        }
+            else return ({ ...state, teamGood: [...state.teamGood, action.payload.hero] })
+        },
+
+
+        // addTeam: (state, action: PayloadAction<Hero>) => {
+        //         const opcion=true
+
+        //     if (opcion) {
+        //         return (
+        //             { ...state, teamBad: [...state.teamBad, action.payload] }
+        //         )
+        //     }
+        //     else return ({ ...state, teamGood: [...state.teamGood, action.payload] })
+        // }
+
     },
     initialState: {
         allHeroes: [],
@@ -40,12 +54,3 @@ export default HeroesSlice.reducer;
 
 
 
-// addTeam: (state, action: PayloadAction<HeroTeam>) => {
-
-//     if (action.payload.team === "bad") {
-//         return (
-//             { ...state, teamBad: [...state.teamBad, action.payload.hero] }
-//         )
-//     }
-//     else return ({ ...state, teamGood: [...state.teamGood, action.payload.hero] })
-// }

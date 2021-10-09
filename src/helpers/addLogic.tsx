@@ -1,13 +1,17 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
 
 import {addTeam} from '~/store/slices/heroes/HeroesSlice';
-import {Hero} from '../interfaces/reqSearchInterface';
+import {Hero, HeroTeam} from '../interfaces/reqSearchInterface';
 
-export const addLogic = (hero: Hero): void => {
-  console.log(hero);
+export const addLogic = (hero: Hero, alignment: string, dispatch:) => {
+  console.log('hola');
 
-  const dispatch = useDispatch();
+  const heroTeam: HeroTeam = {
+    hero,
+    team: alignment,
+  };
 
-  dispatch(addTeam(hero));
+  console.log('hola dos', heroTeam);
+
+  dispatch(addTeam(heroTeam));
 };
