@@ -5,12 +5,12 @@ import React, {useEffect, useState} from 'react';
 import {BiSearchAlt2} from 'react-icons/bi';
 
 import {Card} from '~/component/Card';
-import {Hero, ReqSearchInterface} from '~/interfaces/reqSearchInterface';
+import {Hero} from '~/interfaces/reqSearchInterface';
 import video from '../assets/home.mp4';
 import './Search.css';
 
 export const Search = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('hulk');
   const [fetchList, setFetchList] = useState<Hero[]>([]);
 
   const handleInput = (e: {target: {value: React.SetStateAction<string>}}) => {
@@ -25,7 +25,7 @@ export const Search = () => {
   }, [query]);
 
   const search = async () => {
-    const responce = await axios.get<ReqSearchInterface>(
+    const responce = await axios.get(
       `https://superheroapi.com/api.php/10226316108633650/search/${query}`,
     );
 
