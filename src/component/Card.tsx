@@ -3,17 +3,15 @@ import {Image} from '@chakra-ui/image';
 import {Flex} from '@chakra-ui/layout';
 import {BiMessageRoundedAdd, BiInfoCircle} from 'react-icons/bi';
 import React from 'react';
-import {useDispatch} from 'react-redux';
 
 import {Hero} from '../interfaces/reqSearchInterface';
-import {addTeam} from '~/store/slices/heroes/HeroesSlice';
+import {addLogic} from '~/helpers/addLogic';
 
 interface Props {
   hero: Hero;
 }
 
 export const Card = ({hero}: Props) => {
-  const dispatch = useDispatch();
   const {alignment} = hero.biography;
 
   return (
@@ -22,16 +20,21 @@ export const Card = ({hero}: Props) => {
       <Flex flexDir="column" position="absolute">
         {alignment === 'neutral' ? (
           <>
-            <Button backgroundColor="yellow" size="xs" textColor="white">
+            <Button backgroundColor="red" size="xs" textColor="white">
               <BiMessageRoundedAdd />
             </Button>
-            <Button backgroundColor="yellow" size="xs" textColor="white">
+            <Button backgroundColor="blue" size="xs" textColor="white">
               <BiInfoCircle />
             </Button>
           </>
         ) : alignment === 'good' ? (
           <>
-            <Button backgroundColor="red" size="xs" textColor="white">
+            <Button
+              backgroundColor="red"
+              size="xs"
+              textColor="white"
+              onClick={() => addLogic(hero)}
+            >
               <BiInfoCircle />
             </Button>
           </>
