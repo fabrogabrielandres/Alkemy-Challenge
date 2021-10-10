@@ -1,19 +1,20 @@
-import * as React from 'react';
-import {Alert, AlertIcon, AlertTitle, AlertDescription, Text} from '@chakra-ui/react';
-import {Box} from '@chakra-ui/layout';
-import {CloseButton} from '@chakra-ui/react';
+import React from 'react';
+import {ToastContainer} from 'react-toastify';
 
 export const AlertMessage = () => {
   return (
-    <>
-      <Box>
-        <Alert status="error">
-          <AlertIcon />
-          <AlertTitle mr={2}>Your browser is outdated!</AlertTitle>
-          <AlertDescription>Your Chakra experience may be degraded.</AlertDescription>
-          <CloseButton position="absolute" right="8px" top="8px" />
-        </Alert>
-      </Box>
-    </>
+    <div>
+      <ToastContainer
+        closeOnClick
+        draggable
+        pauseOnFocusLoss
+        pauseOnHover
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        position="top-left"
+        rtl={false}
+      />
+    </div>
   );
 };
