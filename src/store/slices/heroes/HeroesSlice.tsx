@@ -17,7 +17,6 @@ export const HeroesSlice = createSlice({
 
         addTeam: (state, action: PayloadAction<HeroTeam>) => {
 
-
             if (action.payload.team === "bad") {
                 return (
                     { ...state, teamBad: [...state.teamBad, action.payload.hero] }
@@ -25,18 +24,6 @@ export const HeroesSlice = createSlice({
             }
             else return ({ ...state, teamGood: [...state.teamGood, action.payload.hero] })
         },
-
-
-        // addTeam: (state, action: PayloadAction<Hero>) => {
-        //         const opcion=true
-
-        //     if (opcion) {
-        //         return (
-        //             { ...state, teamBad: [...state.teamBad, action.payload] }
-        //         )
-        //     }
-        //     else return ({ ...state, teamGood: [...state.teamGood, action.payload] })
-        // }
 
     },
     initialState: {
