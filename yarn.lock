@@ -3001,6 +3001,11 @@
   dependencies:
     "has-flag" "^4.0.0"
 
+"sweetalert2@^11.1.7":
+  "integrity" "sha512-7MHQVtKCTORfA9e58g9ZOfT3X58DkSBtvoCQJnqSHobXXb5C7aB8Yg/tAccTFnefCUBU41PoStjXMkzG3bNeig=="
+  "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.1.7.tgz"
+  "version" "11.1.7"
+
 "table@^6.0.4":
   "integrity" "sha512-rxZevLGTUzWna/qBLObOe16kB2RTnnbhciwgPbMMlazz1yZGVEgnZK762xyVdVznhqxrfCeBMmMkgOOaPwjH7g=="
   "resolved" "https://registry.npmjs.org/table/-/table-6.0.7.tgz"

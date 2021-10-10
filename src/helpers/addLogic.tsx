@@ -1,3 +1,6 @@
+import React from 'react';
+
+import {AlertMessage} from '~/component/AlertMessage';
 import {addTeam} from '~/store/slices/heroes/HeroesSlice';
 import {Hero, HeroTeam} from '../interfaces/reqSearchInterface';
 
@@ -12,11 +15,10 @@ export const addLogic = (hero: Hero, alignment: string, dispatch, state) => {
   if (state.HeroesSlice.teamBad.length < 3 && alignment === 'bad') {
     dispatch(addTeam(heroTeam));
   } else {
-    console.log('no se puede ');
-  }
-  if (state.HeroesSlice.teamGood.length < 3 && alignment === 'good') {
-    dispatch(addTeam(heroTeam));
-  } else {
-    console.log('no se puede ');
+    if (state.HeroesSlice.teamGood.length < 3 && alignment === 'good') {
+      dispatch(addTeam(heroTeam));
+    } else {
+      <AlertMessage />;
+    }
   }
 };
