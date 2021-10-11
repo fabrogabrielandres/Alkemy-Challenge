@@ -10,7 +10,7 @@ import video from '../assets/home.mp4';
 import './Search.css';
 
 export const Search = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('hulk');
   const [fetchList, setFetchList] = useState<Hero[]>([]);
 
   const handleInput = (e: {target: {value: React.SetStateAction<string>}}) => {

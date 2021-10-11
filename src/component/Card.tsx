@@ -21,19 +21,21 @@ export const Card = ({hero}: Props) => {
   const [showModal, setshowModal] = useState(false);
 
   return (
-    <Flex border="solid" borderColor="red" direction="column" margin={'2%'} w={'30%'}>
-      <Image alt="hero" boxSize="full" position="relative" src={hero.image.url} />
-      <Flex flexDir="column" position="absolute">
-        <Button
-          backgroundColor="red"
-          size="xs"
-          textColor="white"
-          onClick={() => setshowModal(!showModal)}
-        >
-          <BiMessageRoundedAdd />
-        </Button>
-        {showModal ? <ModalTeam hero={hero} showModal={showModal} /> : null}
+    <>
+      <Flex border="solid" borderColor="red" direction="column" margin={'2%'} w={'30%'}>
+        <Image alt="hero" boxSize="full" position="relative" src={hero.image.url} />
+        <Flex flexDir="column" position="absolute">
+          <Button
+            backgroundColor="red"
+            size="xs"
+            textColor="white"
+            onClick={() => setshowModal(!showModal)}
+          >
+            <BiMessageRoundedAdd />
+          </Button>
+        </Flex>
       </Flex>
-    </Flex>
+      {showModal ? <ModalTeam hero={hero} /> : null}
+    </>
   );
 };
