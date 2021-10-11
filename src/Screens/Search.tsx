@@ -10,7 +10,7 @@ import video from '../assets/home.mp4';
 import './Search.css';
 
 export const Search = () => {
-  const [query, setQuery] = useState('hulk');
+  const [query, setQuery] = useState('');
   const [fetchList, setFetchList] = useState<Hero[]>([]);
 
   const handleInput = (e: {target: {value: React.SetStateAction<string>}}) => {
@@ -29,7 +29,9 @@ export const Search = () => {
       `https://superheroapi.com/api.php/10226316108633650/search/${query}`,
     );
 
-    setFetchList(responce.data.results);
+    if (responce.data.results) {
+      setFetchList(responce.data.results);
+    }
   };
 
   return (
