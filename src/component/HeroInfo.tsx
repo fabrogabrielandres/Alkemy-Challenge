@@ -1,5 +1,5 @@
 import React from 'react';
-import {Flex, Text} from '@chakra-ui/layout';
+import {Flex, HStack, Text} from '@chakra-ui/layout';
 import {
   GiAncientSword,
   GiSwordsEmblem,
@@ -8,6 +8,7 @@ import {
   GiStripedSword,
   GiSwordSlice,
 } from 'react-icons/gi';
+import './card.css';
 
 import {Hero} from '../interfaces/reqSearchInterface';
 interface Props {
@@ -17,35 +18,35 @@ export const HeroInfo = ({hero}: Props) => {
   const {combat, durability, intelligence, power, speed, strength} = hero.powerstats;
 
   return (
-    <Flex alignItems="center" flexDir="column">
-      <Flex>
-        <Text>{`Name: ${hero.name}`}</Text>
-      </Flex>
+    <Flex alignItems="center" className="info" flexDir="column" justify="center">
+      <HStack>
+        <Text color="red">{`Name: ${hero.name}`}</Text>
+      </HStack>
 
-      <Flex>
+      <HStack>
         <GiAncientSword color={'red'} />
         <Text color="red">{`Combat: ${combat}`}</Text>
-      </Flex>
-      <Flex>
+      </HStack>
+      <HStack>
         <GiSwordsEmblem color={'red'} />
         <Text color="red">{`Durability: ${durability}`}</Text>
-      </Flex>
-      <Flex>
+      </HStack>
+      <HStack>
         <GiBrain color={'red'} />
         <Text color="red">{`Intelligence: ${intelligence}`}</Text>
-      </Flex>
-      <Flex>
+      </HStack>
+      <HStack>
         <GiSwordsPower color={'red'} />
         <Text color="red">{`Power: ${power}`}</Text>
-      </Flex>
-      <Flex>
+      </HStack>
+      <HStack>
         <GiStripedSword color={'red'} />
         <Text color="red">{`Speed: ${speed}`}</Text>
-      </Flex>
-      <Flex>
+      </HStack>
+      <HStack>
         <GiSwordSlice color={'red'} />
         <Text color="red">{`Strength: ${strength}`}</Text>
-      </Flex>
+      </HStack>
     </Flex>
   );
 };

@@ -35,8 +35,21 @@ export const Card = ({hero}: Props) => {
 
   return (
     <>
-      <Flex border="solid" borderColor="red" direction="column" margin={'2%'} w={'30%'}>
-        <Image alt="hero" boxSize="full" position="relative" src={hero.image.url} />
+      <Flex
+        className="caja"
+        direction="column"
+        margin={'2%'}
+        position="relative"
+        w={['100%', '30%', '20%']}
+      >
+        <Image
+          alt="hero"
+          boxSize="full"
+          className="imagen"
+          position="relative"
+          src={hero.image.url}
+        />
+        <HeroInfo hero={hero} />
         <Flex flexDir="column" position="absolute">
           <Button
             backgroundColor="red"
