@@ -10,6 +10,7 @@ import './card.css';
 import {Hero} from '../interfaces/reqSearchInterface';
 
 import {HeroInfo} from './HeroInfo';
+import {TeamsCard} from './TeamsCard';
 
 const customStyles = {
   content: {
@@ -40,15 +41,9 @@ export const Card = ({hero}: Props) => {
         direction="column"
         margin={'2%'}
         position="relative"
-        w={['100%', '30%', '20%']}
+        w={['45%', '30%', '20%']}
       >
-        <Image
-          alt="hero"
-          boxSize="full"
-          className="imagen"
-          position="relative"
-          src={hero.image.url}
-        />
+        <Image alt="hero" className="imagen" src={hero.image.url} />
         <HeroInfo hero={hero} />
         <Flex flexDir="column" position="absolute">
           <Button
@@ -68,12 +63,10 @@ export const Card = ({hero}: Props) => {
           overlayClassName="Overlay"
           style={customStyles}
         >
-          <Flex alignItems="center" flexDir="column">
-            <Button width={'20%'} onClick={() => setshowModal(!showModal)}>
-              close
-            </Button>
-            <HeroInfo hero={hero} />
-          </Flex>
+          <Button width={'100%'} onClick={() => setshowModal(!showModal)}>
+            close
+          </Button>
+          <TeamsCard hero={hero} />
         </Modal>
       </Flex>
     </>

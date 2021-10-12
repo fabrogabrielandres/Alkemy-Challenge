@@ -5,6 +5,11 @@ export interface ReqSearchInterface {
   'results-for': string;
   results: Hero[];
 }
+export interface InitialState {
+  allHeroes: Hero[];
+  teamBad: Hero[];
+  teamGood: Hero[];
+}
 
 export interface HeroTeam {
   team: string;

@@ -1,12 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Hero, HeroTeam } from '../../../interfaces/reqSearchInterface';
+import {  HeroTeam, InitialState } from '../../../interfaces/reqSearchInterface';
 
-interface InitialState {
-    allHeroes: Hero[];
-    teamBad: Hero[];
-    teamGood: Hero[];
-}
+ 
 
 
 
