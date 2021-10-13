@@ -1,12 +1,15 @@
 import {Button} from '@chakra-ui/button';
 import {Image} from '@chakra-ui/image';
-import {Flex, Text} from '@chakra-ui/layout';
-import React, {useEffect} from 'react';
+import {Flex} from '@chakra-ui/layout';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 
+import noimagejpg from '../assets/noimage.jpg';
 import {Hero} from '~/interfaces/reqSearchInterface';
 import HeroesSlice, {addTeam} from '../store/slices/heroes/HeroesSlice';
 import {InitialState, HeroTeam} from '../interfaces/reqSearchInterface';
+
+import {MiniCard} from './Minicard';
 
 interface Props {
   hero: Hero;
@@ -16,8 +19,6 @@ export const TeamsCard = ({hero}: Props) => {
   const dispatch = useDispatch();
   const HeroesSlice = useSelector((state) => state.HeroesSlice);
   const {allHeroes, teamBad, teamGood}: InitialState = HeroesSlice;
-
-  console.log(hero, 'antes');
 
   const agregarHero = () => {
     const data: HeroTeam = {
@@ -35,7 +36,7 @@ export const TeamsCard = ({hero}: Props) => {
       </Flex>
       <Flex align="center" background="red" direction="row" justify="center">
         {teamBad.map((hero, idx) => (
-          <Image key={idx} alt="hero" src={hero.image.url} width="25%" />
+          <MiniCard key={idx} hero={hero} />
         ))}
       </Flex>
     </Flex>
