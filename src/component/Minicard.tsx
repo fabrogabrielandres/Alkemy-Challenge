@@ -1,11 +1,11 @@
 import {Image} from '@chakra-ui/image';
-import {Flex} from '@chakra-ui/layout';
-import {SliderMark} from '@chakra-ui/slider';
+import {Box, Flex} from '@chakra-ui/layout';
 import React from 'react';
 import {MdPublishedWithChanges} from 'react-icons/md';
 
 import './card.css';
 import {useDispatch} from 'react-redux';
+import {Button} from '@chakra-ui/button';
 
 import {Hero} from '../interfaces/reqSearchInterface';
 import {addTeam} from '~/store/slices/heroes/HeroesSlice';
@@ -27,11 +27,11 @@ export const MiniCard = ({hero}: Props) => {
   };
 
   return (
-    <Flex align="center" className="minicard" direction="column" justify="center">
-      <Image alt="hero" className="imagen" objectFit="cover" src={hero.image.url} />
-      <button className="botonminicard" onClick={agregarHero}>
+    <Box>
+      <Button onClick={agregarHero}>
         <MdPublishedWithChanges />
-      </button>
-    </Flex>
+      </Button>
+      <Image alt="hero" h={120} src={hero.image.url} />
+    </Box>
   );
 };

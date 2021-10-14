@@ -1,8 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import {  HeroTeam, InitialState } from '../../../interfaces/reqSearchInterface';
 
- 
+import { HeroSwap, HeroTeam, InitialState } from '../../../interfaces/reqSearchInterface';
+
+
+
 
 
 
@@ -10,16 +12,34 @@ import {  HeroTeam, InitialState } from '../../../interfaces/reqSearchInterface'
 export const HeroesSlice = createSlice({
     name: 'heroes',
     reducers: {
-
         addTeam: (state, action: PayloadAction<HeroTeam>) => {
+            if (action.payload.team === "good") {
+                console.log(action.payload);
 
-            if (action.payload.team === "bad") {
                 return (
-                    { ...state, teamBad: [...state.teamBad, action.payload.hero] }
+                    {
+                        ...state, teamGood: [...state.teamGood, action.payload.hero]
+                    }
                 )
             }
-            else return ({ ...state, teamGood: [...state.teamGood, action.payload.hero] })
+            if (action.payload.team === "bad") {
+                console.log(action.payload);
+
+
+                return (
+                    {
+                        ...state, teamBad: [...state.teamBad, action.payload.hero]
+                    }
+                )
+            }
+
         },
+        swapBad: (state, action: PayloadAction<HeroSwap>) => {
+            return {
+                ...state, teamBad: [...state.teamBad, action.payload.hero]
+            }
+
+        }
 
     },
     initialState: {

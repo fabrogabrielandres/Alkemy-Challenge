@@ -1,10 +1,9 @@
 import {Button} from '@chakra-ui/button';
-import {Image} from '@chakra-ui/image';
-import {Flex} from '@chakra-ui/layout';
+import {Flex, Grid, GridItem} from '@chakra-ui/layout';
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
+import {Image} from '@chakra-ui/image';
 
-import noimagejpg from '../assets/noimage.jpg';
 import {Hero} from '~/interfaces/reqSearchInterface';
 import HeroesSlice, {addTeam} from '../store/slices/heroes/HeroesSlice';
 import {InitialState, HeroTeam} from '../interfaces/reqSearchInterface';
@@ -18,27 +17,43 @@ interface Props {
 export const TeamsCard = ({hero}: Props) => {
   const dispatch = useDispatch();
   const HeroesSlice = useSelector((state) => state.HeroesSlice);
-  const {allHeroes, teamBad, teamGood}: InitialState = HeroesSlice;
+  const {teamBad, teamGood}: InitialState = HeroesSlice;
 
-  const agregarHero = () => {
+  const agregarHero = (alignment: string) => {
     const data: HeroTeam = {
       hero: hero,
-      team: 'bad',
+      team: alignment,
     };
 
     dispatch(addTeam(data));
   };
 
   return (
-    <Flex alignItems="center" direction="column" height="100%" justify="center" width="100%">
-      <Flex direction="row">
-        <Button onClick={agregarHero}>Agregar</Button>
-      </Flex>
-      <Flex align="center" background="red" direction="row" justify="center">
-        {teamBad.map((hero, idx) => (
-          <MiniCard key={idx} hero={hero} />
-        ))}
-      </Flex>
-    </Flex>
+    <Grid background="black" gridTemplateRows="repeat(2,1fr)" h="100%" w="100%">
+      {/* heroes malos */}
+      <GridItem bg="red">
+        <Flex justifyContent="space-around">
+          {teamGood.map((hero, idx) => (
+            <>
+              <Image alt="hero" h={120} src={hero.image.url} />
+            </>
+          ))}
+        </Flex>
+        <Button onClick={() => agregarHero('good')}>good</Button>
+      </GridItem>
+
+      {/* heroes malos */}
+      <GridItem bg="tomato">
+        <Flex justifyContent="space-around">
+          {teamBad.map((hero, idx) => (
+            // <MiniCard key={idx} hero={hero} />
+            <>
+              <Image alt="hero" h={120} src={hero.image.url} />
+            </>
+          ))}
+        </Flex>
+        <Button onClick={() => agregarHero('bad')}>bad</Button>
+      </GridItem>
+    </Grid>
   );
 };

@@ -1,4 +1,5 @@
 .Modal {
+  border: 5px solid rgb(37, 41, 22);  
   position: absolute;
   background-color: rgba(37, 138, 185, 0.521);
   width: 100%;
@@ -6,12 +7,13 @@
 }
 
 .Overlay {
+  border: 5px solid yellow;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: transparent;
+  background-color: red;
 }
 
 .caja {

@@ -43,9 +43,9 @@ export const Card = ({hero}: Props) => {
         position="relative"
         w={['45%', '30%', '20%']}
       >
-        <Image alt="hero" className="imagen" objectFit="cover" src={hero.image.url} />
+        <Image alt="hero" src={hero.image.url} />
         <HeroInfo hero={hero} />
-        <Flex flexDir="column" position="absolute">
+        <Flex position="absolute">
           <Button
             backgroundColor="red"
             size="xs"
