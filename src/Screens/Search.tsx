@@ -1,37 +1,32 @@
 import {Stack, Flex} from '@chakra-ui/layout';
 import {Input, Icon} from '@chakra-ui/react';
-import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {BiSearchAlt2} from 'react-icons/bi';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {Card} from '~/component/Card';
 import {Hero} from '~/interfaces/reqSearchInterface';
+import {fechQuery} from '~/store/slices/heroes/HeroesSlice';
 import video from '../assets/home.mp4';
 import './Search.css';
 
 export const Search = () => {
-  const [query, setQuery] = useState('hulk');
-  const [fetchList, setFetchList] = useState<Hero[]>([]);
-
+  const [query, setQuery] = useState('');
+  const dispatch = useDispatch();
+  const {allHeroes} = useSelector((state) => state.HeroesSlice);
   const handleInput = (e: {target: {value: React.SetStateAction<string>}}) => {
     setQuery(e.target.value);
   };
 
   useEffect(() => {
     if (query !== '') {
-      search();
+      search(query);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query]);
 
-  const search = async () => {
-    const responce = await axios.get(
-      `https://superheroapi.com/api.php/10226316108633650/search/${query}`,
-    );
-
-    if (responce.data.results) {
-      setFetchList(responce.data.results);
-    }
+  const search = async (query: string) => {
+    dispatch(fechQuery(query));
   };
 
   return (
@@ -51,7 +46,7 @@ export const Search = () => {
       </Stack>
 
       <Flex flexDir="row" justifyContent="space-around" wrap="wrap">
-        {fetchList.map((hero, idx) => (
+        {allHeroes.map((hero: Hero, idx: string) => (
           <Card key={idx} hero={hero} />
         ))}
       </Flex>

@@ -5,10 +5,8 @@ import {useSelector, useDispatch} from 'react-redux';
 import {Image} from '@chakra-ui/image';
 
 import {Hero} from '~/interfaces/reqSearchInterface';
-import HeroesSlice, {addTeam} from '../store/slices/heroes/HeroesSlice';
+import {addTeam} from '../store/slices/heroes/HeroesSlice';
 import {InitialState, HeroTeam} from '../interfaces/reqSearchInterface';
-
-import {MiniCard} from './Minicard';
 
 interface Props {
   hero: Hero;
@@ -35,7 +33,7 @@ export const TeamsCard = ({hero}: Props) => {
         <Flex justifyContent="space-around">
           {teamGood.map((hero, idx) => (
             <>
-              <Image alt="hero" h={120} src={hero.image.url} />
+              <Image key={idx} alt="hero" h={120} src={hero.image.url} />
             </>
           ))}
         </Flex>
@@ -46,9 +44,8 @@ export const TeamsCard = ({hero}: Props) => {
       <GridItem bg="tomato">
         <Flex justifyContent="space-around">
           {teamBad.map((hero, idx) => (
-            // <MiniCard key={idx} hero={hero} />
             <>
-              <Image alt="hero" h={120} src={hero.image.url} />
+              <Image key={idx} alt="hero" h={120} src={hero.image.url} />
             </>
           ))}
         </Flex>
