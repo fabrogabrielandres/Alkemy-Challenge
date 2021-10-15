@@ -11,9 +11,9 @@ import video from '../assets/home.mp4';
 import './Search.css';
 
 export const Search = () => {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('xmen');
   const dispatch = useDispatch();
-  const {allHeroes} = useSelector((state) => state.HeroesSlice);
+  const allHeroes: Hero[] = useSelector((state) => state.HeroesSlice.allHeroes);
   const handleInput = (e: {target: {value: React.SetStateAction<string>}}) => {
     setQuery(e.target.value);
   };

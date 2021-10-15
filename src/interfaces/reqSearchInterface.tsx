@@ -9,6 +9,8 @@ export interface InitialState {
   allHeroes: Hero[];
   teamBad: Hero[];
   teamGood: Hero[];
+  success: boolean;
+  error: any;
 }
 
 export interface HeroTeam {

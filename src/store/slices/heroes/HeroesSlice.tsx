@@ -1,21 +1,27 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-import { Hero, HeroSwap, HeroTeam, InitialState } from '../../../interfaces/reqSearchInterface';
+import { HeroSwap, HeroTeam, InitialState } from '../../../interfaces/reqSearchInterface';
 
 
+export const fechQuery = createAsyncThunk("heroes/fetchQuery", async (query: string) => {
 
-export const fechQuery = createAsyncThunk("heroes/fetchQuery", async (query:string) => {
-    const responce = await axios.get(
-        `https://superheroapi.com/api.php/10226316108633650/search/${query}`,
-    )
+    try {
+        const responce = await axios.get(
+            `https://superheroapi.com/api.php/10226316108633650/search/${query}`,
+        )
 
-    if (responce.data.results) {
-        
-        return responce.data.results
+        if (responce.data.results) {
+            return responce.data.results
+        }
+
+
+    } catch (error) {
+
+        throw error
     }
 
-    return responce;
+
 })
 
 export const HeroesSlice = createSlice({
@@ -43,11 +49,29 @@ export const HeroesSlice = createSlice({
         allHeroes: [],
         teamBad: [],
         teamGood: [],
+        success: false,
+        error: "",
         // eslint-disable-next-line
     } as InitialState,
-    extraReducers:{
-        [fechQuery.fulfilled]: (state,action:Hero[] )=>{
-           state.allHeroes=action.payload
+    extraReducers: {
+
+        [fechQuery.pending]: (state: InitialState) => {
+            state.success = false;
+            state.allHeroes = [];
+
+        },
+        [fechQuery.fulfilled]: (state: InitialState, {payload}) => {
+                        console.log(payload);
+                        
+            state.allHeroes = (payload ? payload: []);
+            state.success = false;
+        },
+        [fechQuery.rejected]: (state: InitialState) => {
+            state.success = false;
+            state.error = false;
+            state.allHeroes = [];
+
+
         }
 
     }
