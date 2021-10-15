@@ -18,7 +18,7 @@ export interface HeroTeam {
 
 export interface HeroSwap {
   hero: Hero;
-  idSwap: number;
+  idSwap: string;
 }
 export interface Hero {
   id: string;
